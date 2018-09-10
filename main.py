@@ -4,7 +4,7 @@ https://leetcode.com/problems/bus-routes/description/
 """
 import networkx as netxlib
 
-best_path_steps = 501
+best_path_steps = 501      # 500 is the maximum number of different routes, so this is the upper bound (never reachable)
 routes = [[1,2,3],[3,5,7],[8,5,9],[10,3,2,7]]
 S = 1       # start stop
 T = 10       # end stop
@@ -72,4 +72,7 @@ for node in G:
         depth_visit(G, visited, node, 1)
         visited[node] = 0
 
-print("To go from %d to %d the best solution is to take %d buses" % (S, T, best_path_steps))
+if best_path_steps == 501:
+    print("There are no paths available from %d to %d" % (S, T))
+else:
+    print("To go from %d to %d the best solution is to take %d buses" % (S, T, best_path_steps))
